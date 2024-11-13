@@ -18,7 +18,7 @@ jobs:
         uses: actions/checkout@v3
       
       - name: Clone Repository
-        run: git clone --branch master https://github.com/Auxilor/EcoEnchants.git
+        run: git clone --branch master https://github.com/Auxilor/EcoJobs.git
       
       - name: Validate Gradle Wrapper
         uses: gradle/wrapper-validation-action@v3
@@ -40,15 +40,15 @@ jobs:
       
       - name: Build
         run: |
-          cd EcoEnchants
+          cd EcoJobs
           chmod +x ./gradlew
           ./gradlew build
 
       - name: Upload Artifacts
         uses: actions/upload-artifact@v4  # Using the latest version
         with:
-          name: EcoEnchants Artifacts
-          path: ./EcoEnchants/build/libs  # Ensure this path is correct
+          name: EcoJobs Artifacts
+          path: ./EcoJobs/build/libs  # Ensure this path is correct
 
       - name: Auto Release
         uses: marvinpinto/action-automatic-releases@latest  # Using the latest stable version
@@ -56,4 +56,4 @@ jobs:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           automatic_release_tag: latest
           prerelease: false
-          files: ./EcoEnchants/build/libs
+          files: ./EcoJobs/build/libs
